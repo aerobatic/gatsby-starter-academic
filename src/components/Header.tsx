@@ -25,19 +25,23 @@ class Header extends Component<IHeaderProps, IState> {
     mobileMenuOpen: false
   };
 
-  handleMenuClick = (event: SyntheticEvent<HTMLButtonElement>) => {
-    this.setState({ mobileMenuOpen: true });
+  handleMobileMenuClick = (event: SyntheticEvent<HTMLButtonElement>) => {
+    this.setState({ mobileMenuOpen: !this.state.mobileMenuOpen });
   };
 
-  renderMenuLink(link: IMenuLink) {
+  handleMobileSearchClick = (event: SyntheticEvent<HTMLButtonElement>) => {
+    this.setState({ mobileSearchOpen: true });
+  };
+
+  renderMenuLink(link: IMenuLink, cssPrefix: string) {
     const { header: headerTheme } = this.props.siteConfig.theme;
 
     const isActive = location.pathname === link.url;
 
-    const className = classnames('nav-link header__menu-link', {
-      'header__menu-link--active': isActive && !headerTheme.isDarkBackground,
-      'header__menu-link--dark': headerTheme.isDarkBackground,
-      'header__menu-link--dark--active': isActive && headerTheme.isDarkBackground
+    const className = classnames(`nav-link ${cssPrefix}-link`, {
+      [`${cssPrefix}-link--active`]: isActive && !headerTheme.isDarkBackground,
+      [`${cssPrefix}-link--dark`]: headerTheme.isDarkBackground,
+      [`${cssPrefix}-link--dark--active`]: isActive && headerTheme.isDarkBackground
     });
 
     if (link.homeAnchor && this.props.location.pathname === ROOT_PATH) {
@@ -78,54 +82,77 @@ class Header extends Component<IHeaderProps, IState> {
     );
   }
 
+  renderMobileMenu(links: IMenuLink[]) {
+    return (
+      <ul
+        className={classnames('header__mobile_menu', {
+          'header__mobile_menu--open': this.state.mobileMenuOpen
+        })}
+      >
+        {links.map((link, i) => (
+          <li key={i} className="header__mobile_menu__item">
+            {this.renderMenuLink(link, 'header__mobile_menu')}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     const { siteConfig } = this.props;
     const rootPath = '/'; // `${__PATH_PREFIX__}/`
     const { header: headerTheme } = this.props.siteConfig.theme;
 
     return (
-      <nav
-        className="navbar fixed-top navbar-expand-lg header"
-        style={{ backgroundColor: headerTheme.backgroundColor }}
-      >
-        <a
-          className={classnames('navbar-brand header__title', {
-            'header__title--dark': headerTheme.isDarkBackground
-          })}
-          href="/"
+      <header className="header">
+        <nav
+          className="navbar fixed-top navbar-expand-lg header__nav"
+          style={{ backgroundColor: headerTheme.backgroundColor }}
         >
-          {this.props.siteConfig.title}
-        </a>
-        <div>
-          {siteConfig.mainMenu.showSearch && (
-            <button type="button" className="header__button">
-              <SearchIcon className="header__button__search" />
-            </button>
-          )}
-          <button type="button" className="header__button" onClick={this.handleMenuClick}>
-            <MenuIcon className="header__button__menu" />
-          </button>
-          {this.state.mobileSearchOpen && (
-            <button type="button" className="header__button">
-              <CloseIcon className="header__button__close" />
-            </button>
-          )}
-        </div>
-        <div className="header__menu">
-          <ul className="navbar-nav">
-            {siteConfig.mainMenu.links.map((link, i) => (
-              <li key={i} className="nav-item header__menu-item">
-                {this.renderMenuLink(link)}
-              </li>
-            ))}
-            {siteConfig.mainMenu.showSearch === true && (
-              <li key="search" className="header__menu-search">
-                {this.renderSearchBox()}
-              </li>
+          <a
+            className={classnames('navbar-brand header__title', {
+              'header__title--dark': headerTheme.isDarkBackground
+            })}
+            href="/"
+          >
+            {this.props.siteConfig.title}
+          </a>
+          <div>
+            {siteConfig.mainMenu.showSearch && (
+              <button
+                type="button"
+                className="header__button"
+                onClick={this.handleMobileSearchClick}
+              >
+                <SearchIcon className="header__button__search" />
+              </button>
             )}
-          </ul>
-        </div>
-      </nav>
+            <button type="button" className="header__button" onClick={this.handleMobileMenuClick}>
+              <MenuIcon className="header__button__menu" />
+            </button>
+            {this.state.mobileSearchOpen && (
+              <button type="button" className="header__button">
+                <CloseIcon className="header__button__close" />
+              </button>
+            )}
+          </div>
+          <div className="header__menu">
+            <ul className="navbar-nav">
+              {siteConfig.mainMenu.links.map((link, i) => (
+                <li key={i} className="nav-item header__menu-item">
+                  {this.renderMenuLink(link, 'header__menu')}
+                </li>
+              ))}
+              {siteConfig.mainMenu.showSearch === true && (
+                <li key="search" className="header__menu-search">
+                  {this.renderSearchBox()}
+                </li>
+              )}
+            </ul>
+          </div>
+        </nav>
+        {this.renderMobileMenu(siteConfig.mainMenu.links)}
+      </header>
     );
   }
 }

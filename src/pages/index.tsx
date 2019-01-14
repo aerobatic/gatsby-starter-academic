@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, graphql } from 'gatsby';
 import { ISiteConfig } from '../types';
 
-import Bio from '../components/Bio';
+import ProfileSection from '../components/ProfileSection';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
@@ -20,6 +20,7 @@ class HomePage extends Component<IHomePageProps> {
   render() {
     const { data } = this.props;
     const siteTitle = data.site.siteMetadata.title;
+    const siteConfig = this.props.data.site.siteMetadata;
     // const posts = data.allMarkdownRemark.edges
 
     return (
@@ -28,7 +29,7 @@ class HomePage extends Component<IHomePageProps> {
           title="All posts"
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         /> */}
-        {/* <Bio /> */}
+        <ProfileSection title="About Me" siteConfig={siteConfig} />
       </Layout>
     );
   }
@@ -43,6 +44,7 @@ export const pageQuery = graphql`
         title
         author
         description
+        portraitImage
         mainMenu {
           showSearch
           links {

@@ -14,6 +14,7 @@ export interface ISiteConfig {
   author?: string;
   email?: string;
   description?: string;
+  portraitImage: string;
   theme?: {
     header?: {
       backgroundColor?: string;

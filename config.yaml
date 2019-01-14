@@ -2,6 +2,7 @@ title: Gatsby Academic
 author: Albus Dumbledore
 email: support@aerobatic.com
 description: A demonstration of the Gatsby Academic starter
+portraitImage: images/portrait.jpg
 
 theme:
   header:

@@ -1,0 +1,37 @@
+title: Gatsby Academic
+author: Albus Dumbledore
+email: support@aerobatic.com
+description: A demonstration of the Gatsby Academic starter
+
+theme:
+  header:
+    backgroundColor: '#8a171a'
+    isDarkBackground: true
+
+mainMenu:
+  showSearch: true
+  links:
+    - text: Home
+      url: /
+      homeAnchor: '#top'
+    - text: Publications
+      url: /publications/
+      homeAnchor: '#publications'
+    - text: Posts
+      url: /posts/
+      homeAnchor: '#posts'
+    - text: Projects
+      url: /projects/
+      homeAnchor: '#projects'
+    - text: Teaching
+      homeAnchor: '#teaching'
+    - text: Contact
+      homeAnchor: '#contact'
+
+socialProfiles:
+  - type: twitter
+    url: https://twitter.com/aerobaticapp
+  - type: googleScholar
+    url: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  - type: github
+    url: https://github.com/aerobaticapp

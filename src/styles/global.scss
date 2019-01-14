@@ -1,0 +1,376 @@
+/* Overall tag styles */
+html {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  position: relative;
+  padding-top: 65px;
+}
+
+a {
+  color: #337ab7;
+}
+
+a:focus {
+  color: #23527c;
+}
+
+a:hover {
+  color: #0095eb;
+}
+
+h1,
+h2 {
+  font-weight: 300;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+div.math {
+  font-size: 1.5rem;
+}
+
+div.MathJax_Display {}
+
+/******************************************************************************/
+/* Boostrap refinements
+/******************************************************************************/
+
+footer.site-footer {
+  color: #899596;
+  margin: 4rem 0 0;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+footer p {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.jumbotron {
+  color: #fff;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: intro 0.3s both;
+  animation-delay: 0s;
+  animation-delay: 0.25s;
+  background-color: #666;
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/bubbles-wide.jpg"); */
+}
+
+.home-section {
+  background-color: rgb(255, 255, 255);
+  padding: 50px 0 50px 0;
+  animation: intro 0.3s both;
+  animation-delay: 0s;
+  animation-delay: 0.15s;
+}
+
+.home-section:nth-of-type(2n) {
+  background-color: rgb(247, 247, 247);
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: 25px 0 25px 0;
+  }
+}
+
+/******************************************************************************/
+/* Component styles
+/* Uses BEM convention - http://getbem.com/introduction/
+/******************************************************************************/
+
+@import "./header.scss";
+
+/* article components */
+.article__container {
+  max-width: 760px;
+  padding: 0;
+  margin: 70px auto 0 auto;
+  border: solid 1px silver;
+}
+
+@media (max-width: 768px) {
+  .article__container {
+    border: none;
+    margin-top: 0;
+  }
+}
+
+.article__content,
+.article__pub_info,
+.article__abstract {
+  padding: 1.25rem;
+  background-color: #fff;
+}
+
+.article__pub_info dd:last-child {
+  margin-top: 0.5rem;
+}
+
+.article__abstract {
+  padding-top: 0;
+}
+
+.article__abstract p:last-child {
+  margin-bottom: 0;
+}
+
+.article__links,
+.article-card__links {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.article__link-item,
+.article-card__link-item {
+  display: inline;
+}
+
+.article__authors,
+.article-card__authors {
+  color: #3170a5;
+  font-style: italic;
+}
+
+.article__featured-img {
+  height: 300px;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.article-card__img-link {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  background: transparent;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.article__img-title {
+  margin: 2rem;
+  color: #fff;
+}
+
+.article-feature-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+/* Overlay to darken the feature image so the white title on top "pops" out */
+.article-feature-img__darken {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.article-feature-img__title {
+  color: #fff;
+  text-shadow: 0 1px 0 black;
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.article-feature-img__container {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+  padding: 1.25rem;
+  display: flex;
+  background: transparent;
+  align-items: flex-end;
+  text-decoration: none;
+}
+
+.article-feature-img__container:hover {
+  text-decoration: none;
+}
+
+.article-share-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.article-share-links__item {
+  display: inline-flex;
+  margin-left: 0.5rem;
+}
+
+.article-share-links__link {
+  background-color: #b5c6ce;
+  display: block;
+  border-radius: 50%;
+  text-decoration: none !important;
+  margin: 0;
+}
+
+.article-share-links__link:hover {
+  background-color: #0095eb;
+}
+
+.article-share-links__icon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  transition: all 150ms ease-in-out;
+  color: #fff;
+}
+
+.article__infobar {
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+.article__pub_info {
+  background-color: rgb(247, 247, 247);
+}
+
+/************** profile component *************/
+.profile {
+  text-align: center;
+}
+
+.profile__portrait {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-position: center center;
+  background-size: cover;
+}
+
+.profile__full-name {
+  font-size: 1.75em;
+  font-weight: 300;
+  color: #000000;
+  margin: 20px 0 10px 0;
+}
+
+.profile__job-title,
+.profile__works-for {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.54);
+  margin: 0px 0 10px 0;
+}
+
+.profile__network-list {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .profile__network-list {
+    margin-top: 15px;
+  }
+}
+
+.profile__network-link {
+  color: #0095eb;
+  text-decoration: none;
+  transition: color 0.6s ease;
+}
+
+.profile__network-icon {
+  font-size: 2.5rem;
+}
+
+.profile__network-item {
+  margin-right: 10px;
+}
+
+.profile__network-item:last-of-type {
+  margin-right: 0;
+}
+
+.profile__network-item:hover {
+  transform: scale(1.2);
+}
+
+.category__container {
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .category__container {
+    margin-top: 15px;
+  }
+}
+
+/************** interests component ********************/
+.interests {}
+
+.interests__list {
+  margin-left: 0;
+}
+
+/************** education component ********************/
+.education {}
+
+.education__course {}
+
+.education__institution {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/************  article-card component ****************/
+.article-card {}
+
+.article-card--empty {
+  border: none !important;
+  background-color: transparent;
+}
+
+.article-card__publication {
+  color: #090;
+}
+
+/* Used to center align youtube video embeds */
+.videobox {
+  display: block;
+  text-align: center;
+}

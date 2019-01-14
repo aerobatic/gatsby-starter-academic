@@ -1,0 +1,147 @@
+/* top_bar menu component */
+
+.header {
+  height: 65px;
+  box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.11);
+  border-color: #e7e7e7;
+  border-width: 0 0 1px;
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.4rem;
+    color: #34495e;
+    box-shadow: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__title--dark {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &__menu {
+    display: flex !important;
+    flex-grow: 1;
+    justify-content: flex-end;
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  &__menu-item {
+    margin-bottom: 0;
+  }
+
+  &__button {
+    display: none;
+    font-size: 2rem;
+    color: #34495e;
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    box-shadow: none;
+    font-weight: bold;
+    color: #34495e;
+
+    &:hover {
+      color: #0095eb;
+    }
+  }
+
+  &__menu-link--dark {
+    color: rgba(255, 255, 255, 0.75);
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+
+  &__menu-link--dark--active {
+    color: #fff;
+  }
+
+  &__menu-item {
+    margin-right: 12px;
+  }
+
+  &__menu-search {
+    margin-bottom: 0;
+  }
+
+  &__search-box {
+    position: relative;
+    width: 250px;
+  }
+
+  &__search-input {
+    padding-right: 30px;
+    width: 100% !important;
+  }
+
+  &__search-icon {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    right: 0px;
+    width: 37px;
+    height: 37px;
+  }
+
+  &__button {
+    color: rgba(255, 255, 255, 0.75);
+
+    &__search,
+    &__menu,
+    &__close {
+      fill: rgba(255, 255, 255, 0.75);
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.header__menu-link .mobile_menu {
+  display: none;
+  background-color: rgb(247, 247, 247);
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 65px;
+  width: 100%;
+  z-index: 10000;
+  position: fixed;
+}
+
+.mobile_menu__item {
+  text-align: center;
+  border-bottom: solid 1px #899596;
+}
+
+.mobile_menu__link {
+  display: block;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.mobile_search {
+  padding: 0.8rem 0;
+}
+
+@media (max-width: 768px) {
+  .header__menu {
+    display: none !important;
+  }
+
+  .header__button {
+    display: inline-block;
+  }
+}

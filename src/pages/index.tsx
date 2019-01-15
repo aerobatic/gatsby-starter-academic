@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import { ISiteConfig } from '../types';
 
 import ProfileSection from '../components/ProfileSection';
+import FeaturedPostsSection from '../components/FeaturedPostsSection';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { rhythm } from '../utils/typography';
@@ -30,6 +31,7 @@ class HomePage extends Component<IHomePageProps> {
           keywords={[`blog`, `gatsby`, `javascript`, `react`]}
         /> */}
         <ProfileSection title="About Me" siteConfig={siteConfig} />
+        <FeaturedPostsSection title="Posts" siteConfig={siteConfig} />
       </Layout>
     );
   }

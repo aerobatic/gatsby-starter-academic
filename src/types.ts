@@ -27,3 +27,11 @@ export interface ISiteConfig {
   };
   socialProfiles?: ISocialProfile[];
 }
+
+export interface IBlogPost {
+  slug: string;
+  date: string;
+  description: string;
+  htmlContent: string;
+  tags: string[];
+}
